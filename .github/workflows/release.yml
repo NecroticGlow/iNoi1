@@ -3,14 +3,13 @@ name: release
 on:
   release:
     types: [ published ]
+  workflow_dispatch:
 
 jobs:
-  # Set release to prerelease first
   prerelease:
     name: Set Prerelease
     runs-on: ubuntu-latest
     steps:
-
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
         with:
@@ -57,4 +56,3 @@ jobs:
         with:
           files: build/compress/*
           prerelease: false
-
