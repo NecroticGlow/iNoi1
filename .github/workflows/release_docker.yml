@@ -19,7 +19,10 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
-
+      - name: Check out the repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 关键：拉取完整 commit 历史和 tags
       - uses: actions/setup-go@v5
         with:
           go-version: "stable"
