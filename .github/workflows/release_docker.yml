@@ -52,7 +52,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            leolitaly/inoi
+            necroticglow/inoi
             ghcr.io/${{ github.repository }}
 
       - name: Set up QEMU
