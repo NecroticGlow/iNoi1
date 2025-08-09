@@ -51,6 +51,7 @@ jobs:
           bash build.sh release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FRONTEND_REPO: ${{ vars.FRONTEND_REPO }}
 
       - name: Upload assets
         uses: softprops/action-gh-release@v2

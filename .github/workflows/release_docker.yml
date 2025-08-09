@@ -40,6 +40,7 @@ jobs:
         run: bash build.sh release docker-multiplatform
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FRONTEND_REPO: ${{ vars.FRONTEND_REPO }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
