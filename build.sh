@@ -4,6 +4,9 @@ builtAt="$(date +'%F %T %z')"
 gitAuthor="The iNoi Projects Contributors <inoi@peifeng.li>"
 gitCommit=$(git log --pretty=format:"%h" -1)
 
+# Set frontend repository, default to OpenListTeam/OpenList-Frontend
+frontendRepo="${FRONTEND_REPO:-OpenListTeam/OpenList-Frontend}"
+
 githubAuthArgs=""
 if [ -n "$GITHUB_TOKEN" ]; then
   githubAuthArgs="--header \"Authorization: Bearer $GITHUB_TOKEN\""
