@@ -9,9 +9,12 @@ RUN bash build.sh release docker
 
 FROM alpine:edge
 
+LABEL MAINTAINER="iNoi"
 ARG INSTALL_FFMPEG=false
 ARG INSTALL_ARIA2=false
-LABEL MAINTAINER="iNoi"
+ARG USER=inoi
+ARG UID=1001
+ARG GID=1001
 
 WORKDIR /opt/inoi/
 
@@ -42,6 +45,11 @@ RUN apk update && \
 
 COPY --chmod=755 /build/${TARGETPLATFORM}/iNoi ./
 COPY --chmod=755 entrypoint.sh /entrypoint.sh
+RUN adduser -u ${UID} -g ${GID} -h /opt/inoi/data -D -s /bin/sh ${USER} \
+    && chown -R ${UID}:${GID} /opt \
+    && chown -R ${UID}:${GID} /entrypoint.sh
+
+USER ${USER}
 RUN /entrypoint.sh version
 
 ENV PUID=0 PGID=0 UMASK=022 RUN_ARIA2=${INSTALL_ARIA2}
