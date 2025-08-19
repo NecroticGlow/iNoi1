@@ -4,6 +4,7 @@ services:
     restart: always
     volumes:
       - "/etc/inoi:/opt/inoi/data"
+      # - "/你的数据文件夹:/media"
     ports:
       - "5244:5244"
       - "5245:5245"
@@ -11,4 +12,5 @@ services:
       - UMASK=022
       - TZ=UTC
     container_name: inoi
+    user: 0:0
     image: "leolitaly/inoi:latest"
